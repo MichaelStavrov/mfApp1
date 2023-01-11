@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "ES5",
+      "ES2015",
+      "ES2016",
+      "ES2017",
+      "ES2018",
+      "ES2019",
+      "ES2020",
+      "ESNext",
+      "dom"
+    ],
+    "target": "ESNext",
+    "module": "ESNext",
+    "jsx": "react",
+    "typeRoots": ["node_modules/@types", "typings/app.d.ts"],
+    "esModuleInterop": true,
+    "declaration": false,
+    "sourceMap": false,
+    "noImplicitThis": false,
+    "outDir": "./dist",
+    "strict": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@layouts/*": ["layouts/*"],
+      "@pages/*": ["pages/*"],
+      "@static/*": ["../static/*"],
+      "@styles/*": ["styles/*"],
+      "@routes/*": ["routes/*"],
+      "@assets/*": ["assets/*"],
+      "@stores/*": ["stores/*"],
+      "@utils/*": ["utils/*"],
+      "@hooks/*": ["hooks/*"],
+      "@constants/*": ["constants/*"],
+      "@context/*": ["context/*"],
+    },
+  },
+  "include": [
+    "src",
+    "decs.d.ts",
+    "app.d.ts",
+    "styled.d.ts"
+  ],
+  "exclude": ["node_modules", "../node_modules"]
+}
