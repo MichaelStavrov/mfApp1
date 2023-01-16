@@ -1,5 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { ModuleFederationPlugin } = require('webpack').container
+// const FederatedTypesPlugin = require('@module-federation/typescript')
+// const { WebpackRemoteTypesPlugin } = require('webpack-remote-types-plugin')
 const ExternalTemplateRemotesPlugin = require('external-remotes-plugin')
 const paths = require('./paths')
 const deps = require('../package.json').dependencies
@@ -9,7 +11,7 @@ module.exports = {
   output: {
     path: paths.build,
     filename: '[name].[chunkhash].bundle.js',
-    publicPath: '/',
+    publicPath: 'auto',
     clean: true,
     assetModuleFilename: 'assets/[hash][ext][query]',
     sourceMapFilename: '[file].map[query]',
@@ -21,6 +23,13 @@ module.exports = {
       template: paths.src + '/index.html',
       filename: 'index.html',
     }),
+    // new WebpackRemoteTypesPlugin({
+    //   remotes: {
+    //     mfHost1: 'mfHost1@http://localhost:3000/remoteEntry.js',
+    //   },
+    //   outputDir: 'types',
+    //   remoteFileName: '[name]-dts.tgz',
+    // }),
     new ModuleFederationPlugin({
       name: 'mfApp1',
       filename: 'remoteEntry.js',
@@ -28,9 +37,11 @@ module.exports = {
         './App': './src/App',
       },
       remotes: {
-        mfHost: 'mfHost@[mfHostUrl]/remoteEntry.js',
+        mfHost1: 'mfHost1@http://localhost:3000/remoteEntry.js',
         // mfApp2: 'mfApp2@[mfApp2Url]/remoteEntry.js',
       },
+      // outputDir: 'types',
+      // remoteFileName: '[name]-dts.tgz',
       shared: {
         react: { singleton: true },
         'react-dom': { singleton: true, requiredVersion: deps['react-dom'] },

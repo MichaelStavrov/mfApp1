@@ -1,0 +1,3 @@
+[submodule "configs-common"]
+	path = configs-common
+	url = https://github.com/MichaelStavrov/configs-common.git

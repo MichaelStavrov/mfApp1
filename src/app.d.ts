@@ -1,3 +1,7 @@
 declare module '*.module.scss'
 declare module '*.svg'
 declare module '*.png'
+declare module 'mfHost1/sum'
+declare module 'mfHost1/utils'
+declare module 'mfHost1/styles'
+declare module 'mfHost1/types'
